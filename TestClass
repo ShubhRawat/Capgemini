@@ -1,0 +1,39 @@
+package com.cg.mra.test;
+
+import junit.framework.Assert;
+
+import org.junit.Test;
+
+import com.cg.mra.exception.NumberException;
+import com.cg.mra.service.AccountService;
+import com.cg.mra.service.AccountServiceImpl;
+
+
+
+public class TestClass {
+
+	@Test
+	public void test_validateMobNo_v1() throws NumberException{
+	
+		String mobNo="ABCD91828288";
+		AccountService service=new AccountServiceImpl();
+		boolean result= service.validateMobNo(mobNo);
+		Assert.assertEquals(false,result);
+	}
+	@Test
+	public void test_validateMobNo_v2() throws NumberException{
+	
+		String mobNo="9922974725";
+		AccountService service=new AccountServiceImpl();
+		boolean result= service.validateMobNo(mobNo);
+		Assert.assertEquals(true,result);
+	}
+	@Test
+	public void test_validateMobNo_v3() throws NumberException{
+	
+		String mobNo="992297";
+		AccountService service=new AccountServiceImpl();
+		boolean result= service.validateMobNo(mobNo);
+		Assert.assertEquals(false,result);
+	}
+}
